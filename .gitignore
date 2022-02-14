@@ -1,0 +1,9 @@
+.terraform/
+*.tfstate*
+.idea
+*temp*
+*tmp
+*.log
+*.out
+*.json
+/workspace.xml

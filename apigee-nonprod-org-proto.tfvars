@@ -1,13 +1,16 @@
-// my-x-eval.tfvars
+project_id = "apigee-nprod-ws004-prototype"
+deploy_region = "northamerica-northeast1"
 
-psn_ranges = ["10.57.192.0/20"]  
+psn_ranges = ["10.58.96.0/20" ]  #Second range of /cidr 28
+cidr_mask = 20  #Adding explicitily 
 network = "apigee-vpc"
-analytics_region = "us-east1"
-runtime_region = "us-central1"
+analytics_region = var.deploy_region
+runtime_region = var.deploy_region
 apigee_environments = ["proto1", "proto2"]
 apigee_envgroups = {
   prototype = {
-    environments = ["proto1", "proto2"]
-    hostnames    = ["proto.api.canadalife.com"]
+    environments = var.apigee_environments
+    hostnames    = ["proto-x.api.canadalife.com"]
   }
 }
+cicd_cred_file = "apigee-nprod-ws004.json" 

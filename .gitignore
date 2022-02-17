@@ -6,4 +6,5 @@
 *.log
 *.out
 *.json
+*.txt
 /workspace.xml

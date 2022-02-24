@@ -72,7 +72,8 @@ node('ecs-tfenv') {
                 def shell = new Shell(this, true)
                 shell.execute("""
                     set +x
-                    env.access_token = "${access_token}"
+                    echo $access_token
+                    export access_token=$access_token
                     """)
             }
         }

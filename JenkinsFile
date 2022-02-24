@@ -80,7 +80,7 @@ node('ecs-tfenv') {
         // Terraform Plan
         stage('TF_PLAN') {
             ansiColor('xterm') {
-                terraformPlan('$gcp_project_name', 'terraform.tfvars' , '-backend-config="access_token=${access_token}"')
+                terraformPlan('$gcp_project_name', 'terraform.tfvars' , '-backend-config="access_token=\"${access_token}\"')
             }
         }
 

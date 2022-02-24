@@ -1,6 +1,8 @@
 terraform {
-  backend "gcs" {
-    bucket = "cft-tfstate-ec3c"
-    prefix = "terraform/apigee/apigee-nprod-ws004-prototype/state"
+  backend "consul" {
+    address = "consul.cicd.canadalife.bz"
+    scheme  = "https"
+    path    = "terraform/state/ecs/gcp/apigee-nprod-ws004-prototype"
+    gzip    = true
   }
 }

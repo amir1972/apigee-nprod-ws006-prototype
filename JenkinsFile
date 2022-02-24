@@ -1,7 +1,7 @@
 /* groovylint-disable LineLength */
 // Jenkins Shared Libraries
 
-@Library('devops-jenkins-libs@merge_jenkins_stdlib') _
+@Library('devops-jenkins-libs@tflib_update_v2') _
 import com.jenkins_stdlib.vault.*
 import com.jenkins_stdlib.shell.*
 import com.jenkins_stdlib.facts.*
@@ -72,7 +72,6 @@ node('ecs-tfenv') {
                 def shell = new Shell(this, true)
                 shell.execute("""
                     set +x
-                    echo $access_token
                     export access_token=$access_token
                     """)
             }
@@ -81,7 +80,7 @@ node('ecs-tfenv') {
         // Terraform Plan
         stage('TF_PLAN') {
             ansiColor('xterm') {
-                terraformPlan('$gcp_project_name', 'terraform.tfvars')
+                terraformPlan('$gcp_project_name', 'terraform.tfvars' , '-backend-config="access_token=$access_token"')
             }
         }
 

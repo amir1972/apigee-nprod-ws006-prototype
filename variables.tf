@@ -50,11 +50,24 @@ variable "cicd_cred_file" {
   type = string
 }
 
-  variable "ip_range" {
-    description = "Customer-provided CIDR block of length 22 for the Apigee instance."
-    type = string
-    validation {
-      condition = try(cidrnetmask(var.ip_range), null) == "255.255.252.0"
-      error_message = "Invalid CIDR block provided; Allowed pattern for ip_range: X.X.X.X/22."
-    }
+  # variable "ip_range" {
+  #   description = "Customer-provided CIDR block of length 22 for the Apigee instance."
+  #   type = string
+  #   validation {
+  #     condition = try(cidrnetmask(var.ip_range), null) == "255.255.252.0"
+  #     error_message = "Invalid CIDR block provided; Allowed pattern for ip_range: X.X.X.X/22."
+  #   }
+  # }
+
+variable "ip_range" {
+  description = "CIDR ranges used for Google services that support Private Service Networking."
+  type        = map(string)
+  default     = null
+  validation {
+    condition = alltrue([
+      for k, v in(var.ip_range == null ? {} : var.ip_range) :
+      can(cidrnetmask(v))
+    ])
+    error_message = "Specify valid RFC1918 CIDR ranges for Private Service Networking."
   }
+}

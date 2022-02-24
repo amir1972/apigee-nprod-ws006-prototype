@@ -5,8 +5,7 @@ module "gcp_apigee_foundation" {
   project_id                    = var.project_id
   deploy_region                 = var.deploy_region
 
-  psn_ranges                    = var.psn_ranges
-  cidr_mask                     = var.cidr_mask
+  ip_range                      = var.ip_range
   network                       = var.network
   analytics_region              = var.analytics_region
   runtime_region                = var.runtime_region

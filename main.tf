@@ -1,6 +1,5 @@
 module "gcp_apigee_foundation" {
-  #source = "git::ssh://git@git.gwl.bz:7999/ecs/tflib-gcp-apigee-foundation.git"
-  source = "git::https://git.gwl.bz/scm/ecs/apigee-nprod-ws004-prototype.git"
+  source = "git::ssh://git@git.gwl.bz:7999/ecs/tflib-gcp-apigee-foundation.git"
 
   project_id                    = var.project_id
   deploy_region                 = var.deploy_region

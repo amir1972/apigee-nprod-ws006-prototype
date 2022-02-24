@@ -68,7 +68,7 @@ node('ecs-tfenv') {
         // Set Consul Access Token
         stage('Consul-Token-Setup') {
             ansiColor('xterm') {
-                def access_token = vault.secret("secret/consul/creds", field = "access_token")
+                def access_token = vault.secret("secret/consul/creds", "access_token")
                 def shell = new Shell(this, true)
                 shell.execute("""
                     set +x

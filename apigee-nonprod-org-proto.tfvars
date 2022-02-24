@@ -1,7 +1,6 @@
 project_id                = "apigee-nprod-ws004-prototype"
 deploy_region             = "northamerica-northeast1"
-psn_ranges                = ["10.58.96.0/22" ]  #Second range of /cidr 28
-cidr_mask                 = 22  #Adding explicitily 
+ip_range                  = "10.58.24.0/22"  #Assumed second range of /cidr 28 added to end
 network                   = "apigee-vpc"
 analytics_region          = "northamerica-northeast1"
 runtime_region            = "northamerica-northeast1"

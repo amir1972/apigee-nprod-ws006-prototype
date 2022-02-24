@@ -35,25 +35,6 @@ variable "project_id" {
   type        = string
 }
 
-variable "psn_ranges" {
-  description = "CIDR ranges used for Google services that support Private Service Networking."
-  type = list(string)
-  default = null
-  validation {
-  condition = alltrue([
-  for r in(var.psn_ranges == null ? [] : var.psn_ranges) :
-  can(cidrnetmask(r))
-  ])
-  error_message = "Specify a valid RFC1918 CIDR range for Private Service Networking."
-  }
-}
- 
-variable "cidr_mask" {
-  description = "CIDR mask to use for the size of each range."
-  type = number
-  default = 20
-}
-
 variable "runtime_region" {
   description = "Apigee Runtime Instance Region."
   type        = string
@@ -69,3 +50,11 @@ variable "cicd_cred_file" {
   type = string
 }
 
+  variable "ip_range" {
+    description = "Customer-provided CIDR block of length 22 for the Apigee instance."
+    type = string
+    validation {
+      condition = try(cidrnetmask(var.ip_range), null) == "255.255.252.0"
+      error_message = "Invalid CIDR block provided; Allowed pattern for ip_range: X.X.X.X/22."
+    }
+  }

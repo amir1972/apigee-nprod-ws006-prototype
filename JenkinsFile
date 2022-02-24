@@ -71,7 +71,7 @@ node('ecs-tfenv') {
                 def access_token = vault.secret("secret/consul/creds", "access_token")
                 def shell = new Shell(this, true)
                 shell.execute("""
-                    set -x
+                    set +x
                     export access_token=$access_token
                     """)
             }
@@ -80,7 +80,7 @@ node('ecs-tfenv') {
         // Terraform Plan
         stage('TF_PLAN') {
             ansiColor('xterm') {
-                terraformPlan('$gcp_project_name', 'terraform.tfvars' , '-backend-config="access_token=\"${access_token}\"')
+                terraformPlan('$gcp_project_name', 'terraform.tfvars' , '-backend-config="access_token=\${access_token}"')
             }
         }
 

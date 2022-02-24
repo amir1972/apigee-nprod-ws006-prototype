@@ -74,6 +74,7 @@ node('ecs-tfenv') {
                     set -x
                     echo $access_token
                     export access_token=$access_token
+                    env.access_token=$access_token
                     """)
             }
         }

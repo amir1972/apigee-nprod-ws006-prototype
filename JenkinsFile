@@ -71,7 +71,8 @@ node('ecs-tfenv') {
                 def access_token = vault.secret("secret/consul/creds", "access_token")
                 def shell = new Shell(this, true)
                 shell.execute("""
-                    set +x
+                    set -x
+                    echo $access_token
                     export access_token=$access_token
                     """)
             }

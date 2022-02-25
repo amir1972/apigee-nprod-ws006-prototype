@@ -11,5 +11,5 @@ apigee_envgroups          = {
                                 hostnames    = ["proto-x.api.canadalife.com"]
                               }
                             }
-cicd_cred_file             = "apigee-nprod-ws004.json"
+cicd_cred_file             = "apigee-nprod-ws004-prototype.json"
 terraform_service_account  = "apigee-nprod-ws004-tf-prod@cantech-terraformers.iam.gserviceaccount.com"

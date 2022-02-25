@@ -9,6 +9,10 @@ import com.jenkins_stdlib.parameters.*
 import com.jenkins_stdlib.apis.*
 import com.jenkins_stdlib.ansible.*
 
+platformJenkinsLibs=library identifier: 'platform-jenkins-libs@masster', retriever: modernSCM(
+          [$class: 'GitSCMSource',
+          remote: 'https://git.gwl.bz/scm/pdpc/platform_jenkins_sharedlibs.git',
+          credentialsId: 'smo_sa_git'])
 
 // Scripted pipeline
 
@@ -68,7 +72,14 @@ node('ecs-tfenv') {
         // Terraform Plan
         stage('TF_PLAN') {
             ansiColor('xterm') {
-                terraformPlan('$gcp_project_name', 'terraform.tfvars')
+                env.TF_PLAN = "${WORKSPACE}_plan.out"
+                //terraformPlan('$gcp_project_name', 'terraform.tfvars')
+                //Authenticate to Hashi Vault
+                hashiVaultAuth() 
+                // Setup required environment variables
+                terraformUtils.tfutilenv()
+                // Initialize Terraform and Collect Remote Modules
+                terraformUtils.tfinit("${ACCESS_TOKEN}","${VAULT_TOKEN}","pd_sshkey","${TF_PLAN}","terraform.tfvars")
             }
         }
 

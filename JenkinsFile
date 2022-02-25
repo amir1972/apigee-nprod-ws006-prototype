@@ -9,7 +9,7 @@ import com.jenkins_stdlib.parameters.*
 import com.jenkins_stdlib.apis.*
 import com.jenkins_stdlib.ansible.*
 
-platformJenkinsLibs=library identifier: 'platform-jenkins-libs@masster', retriever: modernSCM(
+platformJenkinsLibs=library identifier: 'platform-jenkins-libs@master', retriever: modernSCM(
           [$class: 'GitSCMSource',
           remote: 'https://git.gwl.bz/scm/pdpc/platform_jenkins_sharedlibs.git',
           credentialsId: 'smo_sa_git'])

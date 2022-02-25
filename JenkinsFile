@@ -73,6 +73,11 @@ node('ecs-tfenv') {
         stage('TF_PLAN') {
             ansiColor('xterm') {
                 env.TF_PLAN = "${WORKSPACE}_plan.out"
+                env.VAULT_ADDR = "https://vault.cicd.canadalife.bz"
+                env.VAULT_SSL_VERIFY = false
+                env.CONSUL_HTTP_SSL_VERIFY =false
+                env.VAULT_CREDS = credentials('vault_credentials')
+                env.VAULT_PREFIX_PATH = "secret/ecs/platform/"
                 //terraformPlan('$gcp_project_name', 'terraform.tfvars')
                 //Authenticate to Hashi Vault
                 hashiVaultAuth() 

@@ -65,22 +65,10 @@ node('ecs-tfenv') {
             }
         }
 
-        // Set Consul Access Token
-        stage('Consul-Token-Setup') {
-            ansiColor('xterm') {
-                def access_token = vault.secret("secret/consul/creds", "access_token")
-                def shell = new Shell(this, true)
-                shell.execute("""
-                    set +x
-                    export access_token=$access_token
-                    """)
-            }
-        }
-
         // Terraform Plan
         stage('TF_PLAN') {
             ansiColor('xterm') {
-                terraformPlan('$gcp_project_name', 'terraform.tfvars' , '-backend-config="access_token=\${access_token}"')
+                terraformPlan('$gcp_project_name', 'terraform.tfvars')
             }
         }
 

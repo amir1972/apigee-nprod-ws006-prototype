@@ -1,7 +1,7 @@
 /* groovylint-disable LineLength */
 // Jenkins Shared Libraries
 
-@Library('devops-jenkins-libs@merge_jenkins_stdlib') _
+@Library('devops-jenkins-libs@tflib_update_v2') _
 import com.jenkins_stdlib.vault.*
 import com.jenkins_stdlib.shell.*
 import com.jenkins_stdlib.facts.*

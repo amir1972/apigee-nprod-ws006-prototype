@@ -69,24 +69,25 @@ node('ecs-tfenv') {
             }
         }
 
+        // Set Consul Access Token
+        stage('Consul-Token-Setup') {
+            ansiColor('xterm') {
+                def access_token = vault.secret("secret/consul/creds", "access_token")
+                def shell = new Shell(this, true)
+                shell.execute("""
+                    set +x
+                    export access_token=$access_token
+                    """)
+            }
+        }
+
         // Terraform Plan
         stage('TF_PLAN') {
             ansiColor('xterm') {
-                env.TF_PLAN = "${WORKSPACE}_plan.out"
-                env.VAULT_ADDR = "https://vault.cicd.canadalife.bz"
-                env.VAULT_SSL_VERIFY = false
-                env.CONSUL_HTTP_SSL_VERIFY =false
-                env.VAULT_CREDS = credentials('vault_credentials')
-                env.VAULT_PREFIX_PATH = "secret/ecs/platform/"
-                //terraformPlan('$gcp_project_name', 'terraform.tfvars')
-                //Authenticate to Hashi Vault
-                hashiVaultAuth() 
-                // Setup required environment variables
-                terraformUtils.tfutilenv()
-                // Initialize Terraform and Collect Remote Modules
-                terraformUtils.tfinit("${ACCESS_TOKEN}","${VAULT_TOKEN}","pd_sshkey","${TF_PLAN}","terraform.tfvars")
+                terraformPlan('$gcp_project_name', 'terraform.tfvars' , '-backend-config="access_token=\${access_token}"')
             }
         }
+
 
         // Approval Step
         stage('wait approval') {

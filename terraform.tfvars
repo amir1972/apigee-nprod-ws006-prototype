@@ -1,5 +1,6 @@
 project_id                = "apigee-nprod-ws004-prototype"
 deploy_region             = "northamerica-northeast1"
+#IP Ranges documented at https://spaces.gwl.ca/display/ECS/GCP+Projects+and+CIDR+Implementation
 ip_range                  = {range-a = "10.58.24.0/22"}  #Assumed second range of /cidr 28 added to end
 network                   = "apigee-vpc"
 analytics_region          = "us-east1"

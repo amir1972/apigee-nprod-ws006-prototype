@@ -8,7 +8,7 @@ apigee_environments       = ["proto1", "proto2"]
 apigee_envgroups          = {
                               prototype = {
                                 environments = ["proto1", "proto2"]
-                                hostnames    = ["proto-x.api.canadalife.com"]
+                                hostnames    = ["prototype-apix.canadalife.com"]
                               }
                             }
 cicd_cred_file             = "apigee-nprod-ws004-prototype.json"

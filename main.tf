@@ -4,8 +4,7 @@ module "apigee-x-core" {
   project_id                = "apigee-nprod-ws004-prototype"
   #IP Ranges documented at https://spaces.gwl.ca/display/ECS/GCP+Projects+and+CIDR+Implementation
   ax_region         = "us-east1"  #Analytics Region (and also KeyRing for Database Encryption)
-  network           = "apigee-nprod-prototype-vpc"
-  #network          = " int-cl-apigee-prototype-shared-vpc-1"
+  network           = "int-cl-apigee-prototype-shared-vpc-1"
   apigee_instances  = {
     # Single instance only for eval, add a second instance for prod setups
     na-ne1-instance = {

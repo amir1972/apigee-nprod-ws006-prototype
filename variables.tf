@@ -15,11 +15,6 @@ variable "network" {
   type        = string
 }
 
-variable "deploy_region" {
-  description = "Deploy Region for the Apigee Organization (immutable). See https://cloud.google.com/apigee/docs/api-platform/get-started/install-cli."
-  type = string
-}
-
 variable "apigee_envgroups" {
   description = "Apigee Environment Groups."
   type = map(object({

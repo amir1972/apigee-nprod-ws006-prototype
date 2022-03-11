@@ -1,7 +1,8 @@
 project_id                = "apigee-nprod-ws004-prototype"
 #IP Ranges documented at https://spaces.gwl.ca/display/ECS/GCP+Projects+and+CIDR+Implementation
 ax_region         = "us-east1"  #Analytics Region (and also KeyRing for Database Encryption)
-network           = "int-cl-apigee-prototype-shared-vpc-1"
+#network           = "int-cl-apigee-prototype-shared-vpc-1"
+network            = "projects/net-hub-infra/global/networks/int-cl-apigee-prototype-shared-vpc-1"
 
 apigee_environments = ["proto1", "proto2"]
 

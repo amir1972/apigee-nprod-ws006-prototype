@@ -1,13 +1,12 @@
-project_id                = "apigee-nprod-ws004-prototype"
-#IP Ranges documented at https://spaces.gwl.ca/display/ECS/GCP+Projects+and+CIDR+Implementation
-ax_region         = "us-east1"  #Analytics Region (and also KeyRing for Database Encryption)
-#network           = "int-cl-apigee-prototype-shared-vpc-1"
+project_id         = "apigee-nprod-ws004-prototype"  #Must be registered with Google to become a paid org
+
+ax_region          = "us-east1"  #Analytics Region (and also KeyRing for Database Encryption)
 network            = "projects/net-hub-infra/global/networks/int-cl-apigee-prototype-shared-vpc-1"
 
 apigee_environments = ["proto1", "proto2"]
 
 apigee_instances  = {
-  # Single instance only for eval, add a second instance for prod setups
+  #IP Ranges documented at https://spaces.gwl.ca/display/ECS/GCP+Projects+and+CIDR+Implementation
   na-ne1-instance = {
     region        = "northamerica-northeast1"  #And also for Disk Encryption Keyring
     ip_range      = "10.58.24.0/22"
@@ -21,9 +20,9 @@ apigee_instances  = {
   # }
 }
 apigee_envgroups    = {
-                        prototype = {
-                          environments = ["proto1", "proto2"]
-                          hostnames    = ["prototype-apix.canadalife.com"]
+            prototype = {
+           environments = ["proto1", "proto2"]
+           hostnames    = ["prototype-apix.canadalife.com", "prototype-api.canadalife.com"]
                         }
                       }
 cicd_cred_file             = "apigee-nprod-ws004-prototype.json"

@@ -20,7 +20,7 @@ node('ecs-tfenv') {
     def ROLE_ID = 'c948e9d5-b3b0-29b1-5faa-7e60b9e6fed6'
 
     // GCP Project Name e.g : tf-gcp-net-mgmt
-    def gcp_project_name = 'apigee-nprod-ws004-prototype'
+    def gcp_project_name = 'apigee-nprod-ws006-prototype'
 
     ws("${workspace}") {
     

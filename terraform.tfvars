@@ -66,7 +66,7 @@ environments = ["proto1", "proto2"]
 
 # Apigee hostnames.
 #type        = list(string)
-hostnames = ["prototype-apix.canadalife.com"]
+hostnames = ["prototype-api.canadalife.com","prototype-apix.canadalife.com"]
 
 # Apigee Environment Groups.
 /*type = map(object({
@@ -77,7 +77,7 @@ hostnames = ["prototype-apix.canadalife.com"]
 apigee_envgroups = {
   proto-env-grp = {
     environments = ["proto1", "proto2"]
-    hostnames    = ["prototype-apix.canadalife.com"]
+    hostnames    = ["prototype-api.canadalife.com","prototype-apix.canadalife.com"]
   }
 }
 

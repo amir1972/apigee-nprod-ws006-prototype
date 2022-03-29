@@ -7,7 +7,7 @@ This is what this script can create:
 
 1. Apigee Core Setup:
   * Setup Apigee
-  * Create a Apigee instance
+* Create a Apigee instance
 * Create a Key Rings (DB and Disk)
 * Create a keys (DB and Disk)
 * Create the Apigee service identity with permissions

@@ -1,23 +1,20 @@
 
-Terraform Script to create GCP infrastructure
-
-
+# Terraform Script to create GCP infrastructure
 
 The modules described below can also be used to provision paid Apigee X organizations. To create a paid organization you will have Create a network IP range with a CIDR length of /22, a google-managed-services-support-1 a network IP range with a CIDR length of /28, and add your KMS keys as described in the module documentation references located a the bottom of this document.
 
-
 This is what this script can create:
 
-Apigee Core Setup:
-    Setup Apigee
-    Create a Apigee instance
-    Create a Key Rings (DB and Disk)
-    Create a keys (DB and Disk)
-    Create the Apigee service identity with permissions
-    Create an organization
-    Create an environments
-    Create an environment groups
-    Configure service networking
+1. Apigee Core Setup:
+  * Setup Apigee
+  * Create a Apigee instance
+* Create a Key Rings (DB and Disk)
+* Create a keys (DB and Disk)
+* Create the Apigee service identity with permissions
+* Create an organization
+* Create an environments
+* Create an environment groups
+* Configure service networking
 
 VPC module
     VPC network setup and configuration

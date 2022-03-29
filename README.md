@@ -6,165 +6,118 @@ The modules described below can also be used to provision paid Apigee X organiza
 This is what this script can create:
 
 1. Apigee Core Setup:
-  * Setup Apigee
-* Create a Apigee instance
-* Create a Key Rings (DB and Disk)
-* Create a keys (DB and Disk)
-* Create the Apigee service identity with permissions
-* Create an organization
-* Create an environments
-* Create an environment groups
-* Configure service networking
+   * Setup Apigee
+   * Create a Apigee instance
+   * Create a Key Rings (DB and Disk)
+   * Create a keys (DB and Disk)
+   * Create the Apigee service identity with permissions
+   * Create an organization
+   * Create an environments
+   * Create an environment groups
+   * Configure service networking
 
-VPC module
-    VPC network setup and configuration
-    Peering Network setup and configuration
-    Gateway configuration
-    Level 4 Load balancer configuration
-    Level 7 Load balancer configuration
-    Routing setup and configuration
-    VPN Tunnel setup and configuration
-    Shared VPC Network setup and configuration
-    Private Service Networking setup and configuration
-    Private Service Networking with peering routes setup and configuration
-    DNS Policies setup and configuration
-    Subnet Factory using configuration file
+
+1. VPC module
+   * VPC network setup and configuration
+   * Peering Network setup and configuration
+   * Gateway configuration
+   * Level 4 Load balancer configuration
+   * Level 7 Load balancer configuration
+   * Routing setup and configuration
+   * VPN Tunnel setup and configuration
+   * Shared VPC Network setup and configuration
+   * Private Service Networking setup and configuration
+   * Private Service Networking with peering routes setup and configuration
+   * DNS Policies setup and configuration
+   * Subnet Factory using configuration file
       IAM Roles and Member Setup
-
-
-Google Service Account Module and Organization Module -- Reguires GCP Orgainiztion Id -- -- If you don't have GCP Orgaization see the bottom of the Readme file for  the lines that need to be commented out.
-
-
-
-Organization Module - See documentation for specifs about defining INGRESS
+1. Google Service Account Module and Organization Module
+   * Requires GCP Organization Id
+      * If you don't have GCP Organization see the bottom of the Readme file for the lines that need to be commented out.
+1. Organization Module
+   * See documentation for specifics about defining INGRESS
     IAM bindings, both authoritative and additive
-    Custom IAM roles
-    Audit logging configuration for services
+   * Custom IAM roles
+        * Audit logging configuration for services
     Organization policies
+1. Google Service Account Module
+   * Create the Apigee service identity with IAM bindings
+    * Add Roles and Members to Service Account
+       * Create IAM billing Roles
+       * Create IAM Folder Roles
+       * Create IAM Organization Roles
+       * Create IAM Project Roles
+       * Create IAM Storage Roles
+       * Create Public Keys Directory
 
+Script variables are set in the file terraform.tfvars
 
-Google Service Account Module
-    Create the Apigee service identity with IAM bindings
-    Add Roles and Members to Service Account
-        Create IAM billing Roles
-        Create IAM Folder Roles
-        Create IAM Organization Roles
-        Create IAM Project Roles
-        Create IAM Storage Roles
-        Create Public Keys Directory
-
-
-
-
-
-
-**Script variables going into the file terraform.tfvars
-
-
-
-
-
-**Prerequisites:
+## Prerequisites:
 Install Terraform for Windows
 https://www.terraform.io/downloads.html
 
+1. Org needs to be created
+1. Project needs to be created
+1. Compute Engine has to be enabled
+1. Kubernetes Engine has to be enabled
+1. Identity and Access Management (IAM) API has to be enabled
+1. Cloud DNS API has to be enabled
+1. Cloud Resource Manager API has to be enabled
+1. Cloud Key Management Service (KMS) API has to be enabled
+1. Cloud Billing API has to be enabled
+1. Enable Service Network APIs
 
-Org needs to be created
+   `gcloud services enable compute.googleapis.com apigee.googleapis.com servicenetworking.googleapis.com --project $PROJECT_ID`
 
-Project needs to be created
+1. Project IAM Admin permission has to be added
 
-Compute Engine has to be enabled
+   ` gcloud projects add-iam-policy-binding <YOUR GCLOUD PROJECT ID> --member=serviceAccount:<YOUR SERVICE ACCOUNT> --role=roles/resourcemanager.projectIamAdmin`
 
-Kuberentes Engine has to be enabled
+1. Additional permissions to add:
+   * roles/servicenetworking.networksAdmin
+   * roles/serviceaccount.serviceaccountadmin
+   * roles/cloudkms.cloudkmsadmin
 
-Identity and Access Management (IAM) API has to be enabled
+# GCP
 
-Cloud DNS API has to be enabled
+To start with you need to run these commands in the CLI
 
-Cloud Resource Manager API has to be enabled
+`PROJECT_ID=my-project-id`
 
-Cloud Key Management Service (KMS) API has to be enabled
+`gcloud services enable compute.googleapis.com apigee.googleapis.com servicenetworking.googleapis.com --project $PROJECT_ID`
 
-Cloud Billing API has to be enabled
+`gcloud projects add-iam-policy-binding <YOUR GCLOUD PROJECT ID> --member=serviceAccount:<YOUR SERVICE ACCOUNT> --role=roles/resourcemanager.projectIamAdmin`
 
-
-Enable Service Network APIs
-
-gcloud services enable compute.googleapis.com apigee.googleapis.com servicenetworking.googleapis.com --project $PROJECT_ID
-
-
-Project IAM Admin permission has to be added
-
-gcloud projects add-iam-policy-binding <YOUR GCLOUD PROJECT ID> \
---member=serviceAccount:<YOUR SERVICE ACCOUNT> \
---role=roles/resourcemanager.projectIamAdmin
-
-Additonal permissions to add:
-roles/servicenetworking.networksAdmin
-roles/serviceaccount.serviceaccountadmin
-roles/cloudkms.cloudkmsadmin
-
-
-
-
-GCP
-
-**To start with you need to run these commands in the CLI
-
-PROJECT_ID=my-project-id
-
-gcloud services enable compute.googleapis.com apigee.googleapis.com servicenetworking.googleapis.com --project $PROJECT_ID
-
-gcloud projects add-iam-policy-binding <YOUR GCLOUD PROJECT ID> \
---member=serviceAccount:<YOUR SERVICE ACCOUNT> \
---role=roles/resourcemanager.projectIamAdmin
-
-To get token call"
-
-gcloud auth application-default print-access-token
-
-
+To get token call
+`gcloud auth application-default print-access-token`
 You will need to go to API credentials and create a sevrvice Account for this script and add editor under projects for role
 
 Then Go to the service you created and go to Keys and add a JSON key and download to the directory where you have your Terraform script.
+# Terraform Commands:
 
+`terraform init - Initial Process - after intial run use  flag: -upgrade`
 
-Terraform Commands:
+`terraform fmt - Formats all the files for processing`
 
-terraform init - Initial Process - after intial run use  flag: -upgrade
+`terraform validate - Looks for errors in the script`
 
-terraform fmt - Formats all the files for processing
+`terraform plan - Optional shows Plan before Applying`
 
-terraform validate - Looks for errors in the script
+`terraform apply - Create and modify deployment`
 
-terraform plan - Optional shows Plan before Applying
+`terraform show - Show everything that was deployed`
 
-terraform apply - Create and modify deployment
+`terraform output - Show Outputs`
 
-terraform show - Show everything that was deployed
-
-terraform output - Show Outputs
-
-terraform destroy - Remove all services created by the script
-
-
-
-
+`terraform destroy - Remove all services created by the script`
 
 Additional Terraform commands you might need:
 
-terraform providers
+`terraform providers`
 
-terraform import google_project_service.my_project <your project id>/iam.googleapis.com   //Run only once
+`terraform import google_project_service.my_project <your project id>/iam.googleapis.com   //Run only once`
 
-
-
-
-
-
-
-
-Reference for Modules:  
+# Reference for Modules:  
 
 https://github.com/GoogleCloudPlatform/cloud-foundation-fabric
 
@@ -180,48 +133,24 @@ https://github.com/GoogleCloudPlatform/cloud-foundation-fabric/tree/master/modul
 Google Service Account Module
 https://github.com/GoogleCloudPlatform/cloud-foundation-fabric/tree/master/modules/iam-service-account
 
-
-
-
-
-
-
-
-
-
-***** If not using a project with a GCP orgainization  comment out the following lines of code:
-
-
+If not using a project with a GCP organization, comment out the following lines of code:
 
 firewall-policies.tf:
-
-   Comment entire code resource out
-
-
-
-
-
+* Comment entire code resource out
 
 logging.tf:
 
-    Comment entire code resource out
-
-
-
+* Comment entire code resource out
 
 organization-policies.tf:
-
-    Comment entire code resource out
-
-
-
-
+* Comment entire code resource out
 
 locals.tf:
   
-  Commenmt out Lines: 177 - 300
-  
-*
+* Comment out Lines: 177 - 300
+
+~~~
+/*
   organization_id_numeric = split("/", var.organization_id)[1]
   _group_iam_roles        = distinct(flatten(values(var.group_iam)))
   _group_iam = {
@@ -234,7 +163,6 @@ locals.tf:
       for member in members : { role = role, member = member }
     ]
   ])
-
 
   _iam_additive_member_pairs = flatten([
     for member, roles in var.iam_additive_members : [
@@ -256,14 +184,17 @@ locals.tf:
   _factory_cidrs = try(
     yamldecode(file(var.firewall_policy_factory.cidr_file)), {}
   )
+
   _factory_name = (
     try(var.firewall_policy_factory.policy_name, null) == null
     ? "factory"
     : var.firewall_policy_factory.policy_name
   )
+
   _factory_rules = try(
     yamldecode(file(var.firewall_policy_factory.rules_file)), {}
   )
+
   _factory_rules_parsed = {
     for name, rule in local._factory_rules : name => merge(rule, {
       ranges = flatten([
@@ -272,6 +203,7 @@ locals.tf:
       ])
     })
   }
+
   _merged_rules = flatten([
     for policy, rules in local.firewall_policies : [
       for name, rule in rules : merge(rule, {
@@ -280,11 +212,13 @@ locals.tf:
       })
     ]
   ])
+
   firewall_policies = merge(var.firewall_policies, (
     length(local._factory_rules) == 0
     ? {}
     : { (local._factory_name) = local._factory_rules_parsed }
   ))
+
   firewall_rules = {
     for r in local._merged_rules : "${r.policy}-${r.name}" => r
   }
@@ -313,6 +247,7 @@ locals.tf:
       }
     ]
   ])
+
   _tag_values_iam = flatten([
     for key, value_attrs in local.tag_values : [
       for role in value_attrs.roles : {
@@ -323,6 +258,7 @@ locals.tf:
       }
     ]
   ])
+
   _tags_iam = flatten([
     for tag, attrs in local.tags : [
       for role in keys(coalesce(attrs.iam, {})) : {
@@ -331,32 +267,32 @@ locals.tf:
       }
     ]
   ])
+
   tag_values = {
     for t in local._tag_values : t.key => t
   }
+
   tag_values_iam = {
     for t in local._tag_values_iam : "${t.key}:${t.role}" => t
   }
+
   tags = {
     for k, v in coalesce(var.tags, {}) :
     k => v == null ? { description = null, iam = {}, values = null } : v
   }
+
   tags_iam = {
     for t in local._tags_iam : "${t.tag}:${t.role}" => t
   }
 }
 */
-
-
-
-
-
+~~~
 
 outputs.tf:
 
-Commenmt out Lines: 135 - 203
-
-*
+* Comment out Lines: 135 - 203
+~~~
+/*
 output "custom_role_id" {
   description = "Map of custom role IDs created in the organization."
   value = {
@@ -425,15 +361,14 @@ output "tag_values" {
   }
 }
 */
-
-
-
+~~~
 
 resources.tf:
   
-  Commenmt out Lines: 125 - 134
+* Comment out Lines: 125 - 134
 
-  /*
+~~~
+/*
 resource "google_essential_contacts_contact" "contact" {
   provider                            = google-beta
   for_each                            = var.contacts
@@ -443,23 +378,17 @@ resource "google_essential_contacts_contact" "contact" {
   notification_category_subscriptions = each.value
 }
 */
-
-
-
+~~~
 
 tags.tf:
 
-  Comment entire code resource out
-
-
-
-
+* Comment entire code resource out
 
 variables.tf:
 
-Commenmt out Lines: 534 - 543
-
-  /*
+* Comment out Lines: 534 - 543
+~~~
+/*
 variable "organization_id" {
   description = "Organization id in organizations/nnnnnn format."
   type        = string
@@ -469,15 +398,13 @@ variable "organization_id" {
   }
 }
 */
-
-
-
+~~~
 
   iam.tf
 
-  Commenmt out Lines: 59 -131
-
-  /*
+  * Comment out Lines: 59 -131
+~~~
+/*
 resource "google_organization_iam_custom_role" "roles" {
   for_each    = var.custom_roles
   org_id      = local.organization_id_numeric
@@ -504,7 +431,6 @@ resource "google_organization_iam_member" "additive" {
   role   = each.value.role
   member = each.value.member
 }
-
 
 resource "google_organization_iam_policy" "authoritative" {
   count       = var.iam_bindings_authoritative != null || var.iam_audit_config_authoritative != null ? 1 : 0
@@ -550,5 +476,4 @@ resource "google_organization_iam_audit_config" "config" {
     }
   }
 */
-
-
+~~~

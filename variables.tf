@@ -531,16 +531,14 @@ variable "logging_sinks" {
   //nullable = false
 }
 
-
-#variable "organization_id" {
-#  description = "Organization id in organizations/nnnnnn format."
-#  type        = string
-#  validation {
-#    condition     = can(regex("^organizations/[0-9]+", var.organization_id))
-#    error_message = "The organization_id must in the form organizations/nnn."
-#  }
-#}
-
+variable "organization_id" {
+  description = "Organization id in organizations/nnnnnn format."
+  type        = string
+  validation {
+    condition     = can(regex("^organizations/[0-9]+", var.organization_id))
+    error_message = "The organization_id must in the form organizations/nnn."
+  }
+}
 
 variable "policy_boolean" {
   description = "Map of boolean org policies and enforcement value, set value to null for policy restore."

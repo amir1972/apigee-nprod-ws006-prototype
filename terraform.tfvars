@@ -33,8 +33,7 @@ runtime_type = "CLOUD" //"HYBRID"
 # Organization id in organizations/nnnnnn format. -- If you don't have GCP Orgaization see the bottom of the Readme file for  the lines that need to be commented out.
 #type        = string
 # you can get the number in gcloud using: gcloud organizations list
-//organization_id = "organizations/889759687014"   #Required
-
+organization_id = "organizations/166307584217"   #Required
 
 
 # Apigee Org Details

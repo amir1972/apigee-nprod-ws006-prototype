@@ -21,7 +21,7 @@ module "kms-org-db" {
     }
   }
   keyring = {
-    location = var.runtime_region
+    location = var.analytics_region
     name     = var.kms_key_db_ring_name
   }
   keys = {

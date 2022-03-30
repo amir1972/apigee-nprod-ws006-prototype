@@ -97,8 +97,6 @@ apigee_envgroups = {
 */
 apigee_instances = {}
 
-keyring_create = true
-
 #Customer Managed Encryption Key (CMEK) self link (e.g. `projects/foo/locations/us/keyRings/bar/cryptoKeys/baz`) used for disk and volume encryption (required for PAID Apigee Orgs only).
 #type        = string
 disk_encryption_key = "mydiskkey"

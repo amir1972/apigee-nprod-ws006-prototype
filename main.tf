@@ -14,7 +14,6 @@ provider "google-beta" {
 
 module "kms-org-db" {
   source         = "github.com/terraform-google-modules/cloud-foundation-fabric//modules/kms?ref=v14.0.0"
-  keyring_create = var.keyring_create
   project_id     = var.project_id
   key_iam = {
     org-db = {

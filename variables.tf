@@ -408,14 +408,14 @@ variable "contacts" {
   description = "List of essential contacts for this resource. Must be in the form EMAIL -> [NOTIFICATION_TYPES]. Valid notification types are ALL, SUSPENSION, SECURITY, TECHNICAL, BILLING, LEGAL, PRODUCT_UPDATES."
   type        = map(list(string))
   default     = {}
-  nullable    = false
+  //nullable    = false
 }
 
 variable "custom_roles" {
   description = "Map of role name => list of permissions to create in this project."
   type        = map(list(string))
   default     = {}
-  nullable    = false
+  //nullable    = false
 }
 
 variable "firewall_policies" {
@@ -439,7 +439,7 @@ variable "firewall_policy_association" {
   description = "The hierarchical firewall policy to associate to this folder. Must be either a key in the `firewall_policies` map or the id of a policy defined somewhere else."
   type        = map(string)
   default     = {}
-  nullable    = false
+  //nullable    = false
 }
 
 variable "firewall_policy_factory" {
@@ -456,28 +456,28 @@ variable "group_iam" {
   description = "Authoritative IAM binding for organization groups, in {GROUP_EMAIL => [ROLES]} format. Group emails need to be static. Can be used in combination with the `iam` variable."
   type        = map(list(string))
   default     = {}
-  nullable    = false
+  //nullable    = false
 }
 
 variable "iam_additive" {
   description = "Non authoritative IAM bindings, in {ROLE => [MEMBERS]} format."
   type        = map(list(string))
   default     = {}
-  nullable    = false
+  //nullable    = false
 }
 
 variable "iam_additive_members" {
   description = "IAM additive bindings in {MEMBERS => [ROLE]} format. This might break if members are dynamic values."
   type        = map(list(string))
   default     = {}
-  nullable    = false
+  //nullable    = false
 }
 
 variable "iam_audit_config" {
   description = "Service audit logging configuration. Service as key, map of log permission (eg DATA_READ) and excluded members as value for each service."
   type        = map(map(list(string)))
   default     = {}
-  nullable    = false
+  //nullable    = false
   # default = {
   #   allServices = {
   #     DATA_READ = ["user:me@example.org"]
@@ -506,7 +506,7 @@ variable "logging_exclusions" {
   description = "Logging exclusions for this organization in the form {NAME -> FILTER}."
   type        = map(string)
   default     = {}
-  nullable    = false
+  //nullable    = false
 }
 
 variable "logging_sinks" {
@@ -528,7 +528,7 @@ variable "logging_sinks" {
     error_message = "Type must be one of 'bigquery', 'logging', 'pubsub', 'storage'."
   }
   default  = {}
-  nullable = false
+  //nullable = false
 }
 
 
@@ -546,7 +546,7 @@ variable "policy_boolean" {
   description = "Map of boolean org policies and enforcement value, set value to null for policy restore."
   type        = map(bool)
   default     = {}
-  nullable    = false
+  //nullable    = false
 }
 
 variable "policy_list" {
@@ -558,7 +558,7 @@ variable "policy_list" {
     values              = list(string)
   }))
   default  = {}
-  nullable = false
+  //nullable = false
 }
 
 variable "tag_bindings" {

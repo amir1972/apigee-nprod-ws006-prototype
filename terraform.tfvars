@@ -126,7 +126,7 @@ ip_range = "10.58.24.0/22"
 #Customer-provided CIDR block of length 28 for the Apigee instance.
 #type        = string
 #condition     = try(cidrnetmask(var.ip_range_support), null) == "255.255.255.240"
-ip_range_support = "10.0.0.0/28"
+ip_range_support = "10.58.28.96/28"
 
 # Set to true to create an auto mode subnet, defaults to custom mode.
 #type        = bool
@@ -276,11 +276,11 @@ vpc_create = true
 
 # Authoritative roles granted *on* the service accounts to other identities
 #type        = string
-service_account_usr = "serviceAccount:apigee-nprod-ws004-tf-prod@cantech-terraformers.iam.gserviceaccount.com" # ADD Service Account Email you created in the setup with the prefix serviceAccount:
+service_account_usr = "serviceAccount:apigee-nprod-ws006-tf-prod@cantech-terraformers.iam.gserviceaccount.com" # ADD Service Account Email you created in the setup with the prefix serviceAccount:
 
 # Name of the service account to create.
 #type        = string
-service_name = "apigeenprodws004tfprodservice"
+service_name = "apigeenprodws006tfprodservice"
 
 # Display name of the service account to create.
 #type        = string

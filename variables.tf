@@ -118,6 +118,11 @@ variable "disk_encryption_key" {
   default     = null
 }
 
+variable "keyring_create" {
+  description = "Create the Disk and Database keyrings"
+  type        = bool
+  default     = false
+}
 
 variable "kms_key_ring_name" {
   description = "Google Kms Key Ring Name"

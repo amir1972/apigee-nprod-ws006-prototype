@@ -299,7 +299,7 @@ public_keys_directory = ""
 
 # Authoritative roles granted *on* the service accounts to other identities
 #type        = string
-service_account_create = false
+service_account_create = true
 
 # Generate a key for service account.
 #type        = bool

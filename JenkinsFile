@@ -68,14 +68,14 @@ node('ecs-tfenv') {
         // Terraform Format
         stage('TF_FMT') {
             ansiColor('xterm') {
-                terraformPlan('$gcp_project_name', 'terraform.tfvars')
+                terraformFmt('$gcp_project_name', 'terraform.tfvars')
             }
         }
 
         // Terraform Validate
         stage('TF_VALIDATE') {
             ansiColor('xterm') {
-                terraformPlan('$gcp_project_name', 'terraform.tfvars')
+                terraformValidate('$gcp_project_name', 'terraform.tfvars')
             }
         }
 

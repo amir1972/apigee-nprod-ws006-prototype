@@ -68,7 +68,7 @@ node('ecs-tfenv') {
          // Terraform Validate
         stage('TF_VALIDATE') {
             ansiColor('xterm') {
-                terraformValidate('$gcp_project_name', 'terraform.tfvars')
+                terraformValidate('$gcp_project_name')
             }
         }
 

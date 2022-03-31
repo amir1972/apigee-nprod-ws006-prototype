@@ -279,7 +279,7 @@ service_account_usr = "serviceAccount:apigee-nprod-ws006-tf-prod@cantech-terrafo
 
 # Name of the service account to create.
 #type        = string
-service_name = "apigeenprodws006tfprodservice"
+service_name = "apigeenprodws006service"
 
 # Display name of the service account to create.
 #type        = string

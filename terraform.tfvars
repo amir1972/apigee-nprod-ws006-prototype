@@ -11,7 +11,7 @@ project_id = "apigee-nprod-ws006-prototype"
 
 # Location of Credentials File
 #type        = string // is a json file download and stored in teh same folder of Terrafomr script once you create the Service and then a Key
-credentials_file = "papigee-nprod-ws006-prototype.json"
+credentials_file = var.gcp_app_credentials_file #"papigee-nprod-ws006-prototype.json"
 
 # Apigee Runtime Instance Region.
 #type        = string

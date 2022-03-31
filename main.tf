@@ -1,13 +1,23 @@
 # Project Information
 
 provider "google" {
-  credentials = file(var.credentials_file)
+  credentials = file(var.cicd_cred_file)
+  alias       = "impersonate"
+  scopes = [
+    "https://www.googleapis.com/auth/cloud-platform",
+    "https://www.googleapis.com/auth/userinfo.email",
+  ]
   project     = var.project_id
   region      = var.runtime_region
   zone        = var.runtime_zone
 }
 provider "google-beta" {
-  credentials = file(var.credentials_file)
+  credentials = file(var.cicd_cred_file)
+  alias       = "impersonate"
+  scopes = [
+    "https://www.googleapis.com/auth/cloud-platform",
+    "https://www.googleapis.com/auth/userinfo.email",
+  ]
   project     = var.project_id
   region      = var.runtime_region
 }

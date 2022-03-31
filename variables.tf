@@ -54,10 +54,10 @@ variable "ip_range_support" {
 
 #Required Variables 
 
-variable "credentials_file" {
-  description = "Location of Credentials File"
-  type        = string
-}
+#variable "credentials_file" {
+#  description = "Location of Credentials File"
+#  type        = string
+#}
 
 variable "runtime_zone" {
   description = "Zone of an existing project or of the new project"

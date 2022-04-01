@@ -1,15 +1,15 @@
 
 locals {
-  network = (
-    var.vpc_create
-    ? try(google_compute_network.network.0, null)
-    : try(data.google_compute_network.network.0, null)
-  )
-  peer_network = (
-    var.peering_config == null
-    ? null
-    : element(reverse(split("/", var.peering_config.peer_vpc_self_link)), 0)
-  )
+  # network = (
+  #   var.vpc_create
+  #   ? try(google_compute_network.network.0, null)
+  #   : try(data.google_compute_network.network.0, null)
+  # )
+  # peer_network = (
+  #   var.peering_config == null
+  #   ? null
+  #   : element(reverse(split("/", var.peering_config.peer_vpc_self_link)), 0)
+  # )
   #psa_ranges = { for e in local._psa_ranges : e.name => e }
 
   # https://github.com/hashicorp/terraform/issues/22405#issuecomment-591917758

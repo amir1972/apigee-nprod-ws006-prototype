@@ -71,8 +71,12 @@ module "kms-inst-disk" {
   source     = "github.com/terraform-google-modules/cloud-foundation-fabric//modules/kms?ref=v14.0.0"
   project_id = var.project_id
   keyring_create = var.disk_keyring_create
+ 
+# variable "key_iam" {
+# description = "Key IAM bindings in {KEY => {ROLE => [MEMBERS]}} format."
+# type        = map(map(list(string)))
   key_iam = {
-    inst-disk = {
+    inst-disks = {
       "roles/cloudkms.cryptoKeyEncrypterDecrypter" = ["serviceAccount:${google_project_service_identity.apigee_sa.email}"]
     }
   }
@@ -81,7 +85,7 @@ module "kms-inst-disk" {
     name     = "apigee-${each.key}"
   }
   keys = {
-    inst-disk = null
+    inst-disks = null
   }
 }
 

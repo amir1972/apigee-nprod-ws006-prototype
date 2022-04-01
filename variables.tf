@@ -53,6 +53,15 @@ variable "ip_range_support" {
 # Project Variables
 
 #Required Variables 
+variable "terraform_service_account" {
+  description = "CICD account will impersonation this account when applying Terraform changes"
+  type = string
+}
+
+variable "cicd_cred_file" {
+  description = "Credential file to use to enable impersonation from CICD"
+  type = string
+}
 
 #variable "credentials_file" {
 #  description = "Location of Credentials File"

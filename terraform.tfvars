@@ -2,9 +2,10 @@
 # Terraform Variables
 #The CICD id will impersonate this id when applying changes
 terraform_service_account  = "apigee-nprod-ws006-tf-prod@cantech-terraformers.iam.gserviceaccount.com"
+cicd_cred_file             = "apigee-nprod-ws006-prototype.json"
+
 
 # Project Details
-
 
 # Project ID to host this Apigee organization (will also become the Apigee Org name).
 #type        = string

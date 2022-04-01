@@ -76,7 +76,7 @@ module "kms-inst-disk" {
 # description = "Key IAM bindings in {KEY => {ROLE => [MEMBERS]}} format."
 # type        = map(map(list(string)))
   key_iam = {
-    inst-disks = {
+    inst-disk = {
       "roles/cloudkms.cryptoKeyEncrypterDecrypter" = ["serviceAccount:${google_project_service_identity.apigee_sa.email}"]
     }
   }
@@ -85,7 +85,7 @@ module "kms-inst-disk" {
     name     = "apigee-${each.key}"
   }
   keys = {
-    inst-disks = null
+    inst-disk = null
   }
 }
 

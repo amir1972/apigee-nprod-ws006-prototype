@@ -2,6 +2,8 @@ locals {
   tf_sa = var.terraform_service_account
 }
 
+# Project Information
+
 provider "google" {
   credentials = file(var.cicd_cred_file)
   access_token = data.google_service_account_access_token.default.access_token
@@ -10,6 +12,9 @@ provider "google" {
     "https://www.googleapis.com/auth/cloud-platform",
     "https://www.googleapis.com/auth/userinfo.email",
   ]
+  project     = var.project_id
+  region      = var.runtime_region
+  zone        = var.runtime_zone
 }
 
 data "google_service_account_access_token" "default" {
@@ -21,18 +26,8 @@ data "google_service_account_access_token" "default" {
 
 provider "google-beta" {
   access_token = data.google_service_account_access_token.default.access_token
-}
-
-# Project Information
-
-provider "google" {
-  project     = var.project_id
-  region      = var.runtime_region
-  zone        = var.runtime_zone
-}
-provider "google-beta" {
-  project     = var.project_id
-  region      = var.runtime_region
+  project      = var.project_id
+  region       = var.runtime_region
 }
 
 module "kms-org-db" {

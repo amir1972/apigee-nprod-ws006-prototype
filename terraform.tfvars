@@ -108,7 +108,7 @@ database_encryption_key = "dbkey-2022-03-31"
 
 # Google Kms Key DB Ring Name
 #type        = string
-kms_key_db_ring_name = "apigee-db-keyring-01" #Cannot be used again, must create new names
+kms_key_db_ring_name = "apigee-db-keyring-02" #Cannot be reused, must create new names if a destroy is done
 
 
 #VPC Networks

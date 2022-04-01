@@ -116,7 +116,9 @@ kms_key_db_ring_name = "apigee-db-keyring-01" #Cannot be reused, must create new
 
 
 #VPC Networks
-
+# Create VPC. When set to false, uses a data source to reference existing VPC.
+#type        = bool
+vpc_create = false
 
 #VPC network self link (requires service network peering enabled (Used in Apigee X only).
 # type        = string
@@ -147,7 +149,7 @@ delete_default_routes_on_create = false
 
 # An optional description of this resource (triggers recreation on change).
 # type        = string
-vpc_description = "Terraform-managed."
+vpc_description = "Provided."
 
 # DNS policy setup for the VPC.
 /* type = object({
@@ -270,12 +272,8 @@ subnets = []
   */
 subnets_l7ilb = []
 
-# Create VPC. When set to false, uses a data source to reference existing VPC.
-#type        = bool
-vpc_create = true
 
-
-# Service Accout Creation
+# Service Account Creation
 
 
 # Authoritative roles granted *on* the service accounts to other identities

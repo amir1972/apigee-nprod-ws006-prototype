@@ -110,6 +110,12 @@ variable "hostnames" {
 }
 
 variable "authorized_network" {
+  description = "VPC network self link (requires service network peering enabled."
+  type        = string
+  default     = null
+}
+
+variable "authorized_network_fqn" {
   description = "VPC network self link (requires service network peering enabled (Used in Apigee X only)."
   type        = string
   default     = null

@@ -56,7 +56,7 @@ module "apigee" {
   project_id              = var.project_id
   analytics_region        = var.analytics_region
   runtime_type            = "CLOUD"
-  authorized_network      = var.authorized_network
+  authorized_network      = var.authorized_network_fqn
   database_encryption_key = module.kms-org-db.key_ids["org-db"]
   apigee_environments     = var.environments
   apigee_envgroups        = var.apigee_envgroups

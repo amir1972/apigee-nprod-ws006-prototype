@@ -127,10 +127,16 @@ variable "disk_encryption_key" {
   default     = null
 }
 
-variable "keyring_create" {
+variable "db_keyring_create" {
   description = "Set to false to manage keys and IAM bindings in an existing keyring."
   type        = bool
   default     = false
+}
+
+variable "disk_keyring_create" {
+  description = "Set to false to manage keys and IAM bindings in an existing keyring."
+  type        = bool
+  default     = true
 }
 
 variable "kms_key_ring_name" {

@@ -36,7 +36,7 @@ provider "google-beta" {
 module "kms-org-db" {
   source         = "github.com/terraform-google-modules/cloud-foundation-fabric//modules/kms?ref=v14.0.0"
   project_id     = var.project_id
-  keyring_create = var.keyring_create
+  keyring_create = var.db_keyring_create
   key_iam = {
     org-db = {
       "roles/cloudkms.cryptoKeyEncrypterDecrypter" = ["serviceAccount:${google_project_service_identity.apigee_sa.email}"]
@@ -70,7 +70,7 @@ module "kms-inst-disk" {
   for_each   = var.apigee_instances
   source     = "github.com/terraform-google-modules/cloud-foundation-fabric//modules/kms?ref=v14.0.0"
   project_id = var.project_id
-  keyring_create = var.keyring_create
+  keyring_create = var.disk_keyring_create
   key_iam = {
     inst-disk = {
       "roles/cloudkms.cryptoKeyEncrypterDecrypter" = ["serviceAccount:${google_project_service_identity.apigee_sa.email}"]

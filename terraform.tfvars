@@ -118,12 +118,12 @@ kms_key_db_ring_name = "apigee-db-keyring-01" #Cannot be reused, must create new
 #VPC Networks
 # Create VPC. When set to false, uses a data source to reference existing VPC.
 #type        = bool
-vpc_create = false
+vpc_create = true
 
 #VPC network self link (requires service network peering enabled (Used in Apigee X only).
 # type        = string
 authorized_network_fqn = "projects/net-hub-infra/global/networks/int-cl-apigee-prototype-shared-vpc-1"
-authorized_network = "int-cl-apigee-prototype-shared-vpc-1"
+authorized_network = "not-being-used"
 
 #Customer-provided CIDR block of length 22 for the Apigee instance.
 #type        = string

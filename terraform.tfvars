@@ -85,14 +85,15 @@ apigee_envgroups = {
     environments   = list(string)
   }))
 */
-apigee_instances  = {
-  #IP Ranges documented at https://spaces.gwl.ca/display/ECS/GCP+Projects+and+CIDR+Implementation
-  na-ne1-instance = {
-    region        = "northamerica-northeast1"
-    ip_range      = "10.58.24.0/22"
-    environments  = ["proto1", "proto2"]
-  }
-}
+apigee_instances  = {}
+
+#   #IP Ranges documented at https://spaces.gwl.ca/display/ECS/GCP+Projects+and+CIDR+Implementation
+#   na-ne1-instance = {
+#     region        = "northamerica-northeast1"
+#     ip_range      = "10.58.24.0/22"
+#     environments  = ["proto1", "proto2"]
+#   }
+# }
 
 #Set to false to manage keys and IAM bindings in an existing keyring.
 db_keyring_create = false

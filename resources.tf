@@ -1,9 +1,9 @@
 
-#data "google_compute_network" "network" {
-#  count   = var.vpc_create ? 0 : 1
-#  project = var.project_id
-#  name    = var.authorized_network
-#}
+data "google_compute_network" "network" {
+  count   = var.vpc_create ? 0 : 1
+  project = "net-hub-infra"
+  name    = var.authorized_network
+}
 resource "google_compute_network" "network" {
   count                           = var.vpc_create ? 1 : 0
   project                         = var.project_id

@@ -1,5 +1,7 @@
 
 # Terraform Variables
+#The CICD id will impersonate this id when applying changes
+terraform_service_account  = "apigee-nprod-ws006-tf-prod@cantech-terraformers.iam.gserviceaccount.com"
 
 # Project Details
 

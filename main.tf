@@ -1,3 +1,7 @@
+locals {
+  tf_sa = var.terraform_service_account
+}
+
 # Project Information
 
 provider "google" {
@@ -11,6 +15,14 @@ provider "google" {
   region      = var.runtime_region
   zone        = var.runtime_zone
 }
+
+data "google_service_account_access_token" "default" {
+  provider               = google.impersonate
+  target_service_account = local.tf_sa
+  scopes                 = ["userinfo-email", "cloud-platform"]
+  lifetime               = "3600s" # 60mins
+}
+
 provider "google-beta" {
   credentials = file(var.cicd_cred_file)
   alias       = "impersonate"

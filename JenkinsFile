@@ -89,7 +89,7 @@ node('ecs-tfenv') {
         // Terraform Apply
         stage('TF_APPLY') {
             ansiColor('xterm') {
-                TF_LOG = DEBUG
+                env.TF_LOG = DEBUG
                 terraformApply('$gcp_project_name', 'terraform.tfvars', 'CONFIRM_APPLY')
             }
         }

@@ -127,6 +127,12 @@ variable "disk_encryption_key" {
   default     = null
 }
 
+variable "keyring_create" {
+  description = "Set to false to manage keys and IAM bindings in an existing keyring."
+  type        = bool
+  default     = false
+}
+
 variable "kms_key_ring_name" {
   description = "Google Kms Key Ring Name"
   type        = string

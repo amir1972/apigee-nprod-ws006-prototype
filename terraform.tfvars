@@ -1,6 +1,7 @@
 
 # Terraform Variables
 
+TF_LOG = DEBUG
 
 # Project Details
 

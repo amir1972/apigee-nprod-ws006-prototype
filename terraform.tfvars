@@ -78,22 +78,21 @@ apigee_envgroups = {
   }
 }
 
-# Apigee Instances (only one instance for EVAL).
+# Apigee Instances 
 /*type = map(object({
     runtime_region = string
     ip_range       = string
     environments   = list(string)
   }))
-  Example
-  {
-  dev-test-instance = {
-    region       = "nus-east1"
-    ip_range     = "10.0.0.0/22"
-    environments = ["dev1"]
+*/
+apigee_instances  = {
+  #IP Ranges documented at https://spaces.gwl.ca/display/ECS/GCP+Projects+and+CIDR+Implementation
+  na-ne1-instance = {
+    region        = "northamerica-northeast1"
+    ip_range      = "10.58.24.0/22"
+    environments  = ["proto1", "proto2"]
   }
 }
-*/
-apigee_instances = {}
 
 #Customer Managed Encryption Key (CMEK) self link (e.g. `projects/foo/locations/us/keyRings/bar/cryptoKeys/baz`) used for disk and volume encryption (required for PAID Apigee Orgs only).
 #type        = string

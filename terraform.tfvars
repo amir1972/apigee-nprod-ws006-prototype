@@ -120,7 +120,7 @@ kms_key_db_ring_name = "apigee-db-keyring-01" #Cannot be reused, must create new
 
 #VPC network self link (requires service network peering enabled (Used in Apigee X only).
 # type        = string
-authorized_network = "apigee-vpc"
+authorized_network = "projects/net-hub-infra/global/networks/int-cl-apigee-prototype-shared-vpc-1"
 
 #Customer-provided CIDR block of length 22 for the Apigee instance.
 #type        = string

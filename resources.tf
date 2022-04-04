@@ -1,6 +1,8 @@
 
 data "google_compute_network" "network" {
-  count   = var.vpc_create ? 0 : 1
+#  count   = var.vpc_create ? 0 : 1
+# Must not create VPC, already provided in authorized_network_fqn
+  count   = var.vpc_create ? 1 : 0
   project = "net-hub-infra"
   name    = var.authorized_network
 }

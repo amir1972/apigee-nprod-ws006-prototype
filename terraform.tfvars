@@ -119,7 +119,7 @@ kms_key_db_ring_name = "apigee-db-keyring-01" #Cannot be reused, must create new
 #VPC Networks
 # Create VPC. When set to false, uses a data source to reference existing VPC.
 #type        = bool
-vpc_create = true
+vpc_create = false   #Leave false all the time.
 
 #VPC network self link (requires service network peering enabled (Used in Apigee X only).
 # type        = string

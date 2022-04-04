@@ -4,16 +4,16 @@ data "google_compute_network" "network" {
   project = "net-hub-infra"
   name    = var.authorized_network
 }
-resource "google_compute_network" "network" {
-  count                           = var.vpc_create ? 1 : 0
-  project                         = var.project_id
-  name                            = var.authorized_network
-  description                     = var.vpc_description
-  auto_create_subnetworks         = var.auto_create_subnetworks
-  delete_default_routes_on_create = var.delete_default_routes_on_create
-  mtu                             = var.mtu
-  routing_mode                    = var.routing_mode
-}
+# resource "google_compute_network" "network" {
+#   count                           = var.vpc_create ? 1 : 0
+#   project                         = var.project_id
+#   name                            = var.authorized_network
+#   description                     = var.vpc_description
+#   auto_create_subnetworks         = var.auto_create_subnetworks
+#   delete_default_routes_on_create = var.delete_default_routes_on_create
+#   mtu                             = var.mtu
+#   routing_mode                    = var.routing_mode
+# }
 resource "google_compute_network_peering" "local" {
   provider             = google-beta
   count                = var.peering_config == null ? 0 : 1

@@ -97,7 +97,7 @@ apigee_instances  = {}
 
 #Set to false to manage keys and IAM bindings in an existing keyring.
 db_keyring_create = false
-disk_keyring_create = false
+disk_keyring_create = true
 
 #Customer Managed Encryption Key (CMEK) self link (e.g. `projects/foo/locations/us/keyRings/bar/cryptoKeys/baz`) used for disk and volume encryption (required for PAID Apigee Orgs only).
 #type        = string
@@ -105,7 +105,7 @@ disk_encryption_key = "diskkey-2022-03-31"
 
 #Google Kms Key Ring Name
 #type        = string
-kms_key_ring_name = "apigee-disk-keyring-02"  #Cannot be used again, must create new names
+kms_key_ring_name = "apigee-disk-keyring-01"  #Cannot be used again, must create new names
 
 #Cloud KMS key self link (e.g. `projects/foo/locations/us/keyRings/bar/cryptoKeys/baz`) used for encrypting the data that is stored and replicated across runtime instances (immutable, used in Apigee X only).
 #type        = string

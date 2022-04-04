@@ -123,8 +123,8 @@ vpc_create = false
 
 #VPC network self link (requires service network peering enabled (Used in Apigee X only).
 # type        = string
-authorized_network_fqn = "projects/net-hub-infra/global/networks/int-cl-apigee-prototype-shared-vpc-1"
-authorized_network = ""
+#authorized_network_fqn = "projects/net-hub-infra/global/networks/int-cl-apigee-prototype-shared-vpc-1"
+authorized_network = "int-cl-apigee-prototype-shared-vpc-1"
 
 #Customer-provided CIDR block of length 22 for the Apigee instance.
 #type        = string

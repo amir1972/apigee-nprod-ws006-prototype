@@ -125,7 +125,7 @@ vpc_create = true
 # type        = string
 #authorized_network_fqn = "projects/net-hub-infra/global/networks/int-cl-apigee-prototype-shared-vpc-1"
 authorized_network_fqn = ""
-authorized_network = "not-being-used"
+authorized_network = ""
 
 #Customer-provided CIDR block of length 22 for the Apigee instance.
 #type        = string

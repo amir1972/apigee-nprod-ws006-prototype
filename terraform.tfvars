@@ -85,15 +85,14 @@ apigee_envgroups = {
     environments   = list(string)
   }))
 */
-apigee_instances  = {}
-
-#   #IP Ranges documented at https://spaces.gwl.ca/display/ECS/GCP+Projects+and+CIDR+Implementation
-#   na-ne1-instance = {
-#     region        = "northamerica-northeast1"
-#     ip_range      = "10.58.24.0/22"
-#     environments  = ["proto1", "proto2"]
-#   }
-# }
+apigee_instances  = {
+  #IP Ranges documented at https://spaces.gwl.ca/display/ECS/GCP+Projects+and+CIDR+Implementation
+  na-ne1-instance = {
+    region        = "northamerica-northeast1"
+    ip_range      = "10.58.24.0/22"
+    environments  = ["proto1", "proto2"]
+  }
+}
 
 #Set to false to manage keys and IAM bindings in an existing keyring.
 db_keyring_create = false
@@ -101,19 +100,19 @@ disk_keyring_create = true
 
 #Customer Managed Encryption Key (CMEK) self link (e.g. `projects/foo/locations/us/keyRings/bar/cryptoKeys/baz`) used for disk and volume encryption (required for PAID Apigee Orgs only).
 #type        = string
-disk_encryption_key = "diskkey-2022-03-31"
+disk_encryption_key = "diskkey-2022-04-05"
 
 #Google Kms Key Ring Name
 #type        = string
-kms_key_ring_name = "apigee-disk-keyring-01"  #Cannot be used again, must create new names
+kms_key_ring_name = "apigee-disk-keyring-03"  #Cannot be reused, must create new names
 
 #Cloud KMS key self link (e.g. `projects/foo/locations/us/keyRings/bar/cryptoKeys/baz`) used for encrypting the data that is stored and replicated across runtime instances (immutable, used in Apigee X only).
 #type        = string
-database_encryption_key = "dbkey-2022-03-31"
+database_encryption_key = "dbkey-2022-04-05"
 
 # Google Kms Key DB Ring Name
 #type        = string
-kms_key_db_ring_name = "apigee-db-keyring-01" #Cannot be reused, must create new names if a destroy is done
+kms_key_db_ring_name = "apigee-db-keyring-03" #Cannot be reused, must create new names if a destroy is done
 
 
 #VPC Networks
@@ -123,8 +122,7 @@ vpc_create = false   #Leave false all the time.
 
 #VPC network self link (requires service network peering enabled (Used in Apigee X only).
 # type        = string
-#authorized_network_fqn = "projects/net-hub-infra/global/networks/int-cl-apigee-prototype-shared-vpc-1"
-authorized_network_fqn = ""
+authorized_network_fqn = "projects/net-hub-infra/global/networks/pvt-cl-hub-prod-vpc-01"
 authorized_network = ""
 
 #Customer-provided CIDR block of length 22 for the Apigee instance.

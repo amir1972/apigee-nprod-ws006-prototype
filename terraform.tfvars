@@ -95,7 +95,7 @@ apigee_instances  = {
 }
 
 #Set to false to manage keys and IAM bindings in an existing keyring.
-db_keyring_create = false
+db_keyring_create = true
 disk_keyring_create = true
 
 #Customer Managed Encryption Key (CMEK) self link (e.g. `projects/foo/locations/us/keyRings/bar/cryptoKeys/baz`) used for disk and volume encryption (required for PAID Apigee Orgs only).

@@ -9,17 +9,17 @@ output "bindings" {
   value       = { for k, v in google_compute_subnetwork_iam_binding.binding : k => v }
 }
 
-output "name" {
-  description = "The name of the VPC being created."
-  value       = local.network.name
-  depends_on = [
-    google_compute_network_peering.local,
-    google_compute_network_peering.remote,
-    google_compute_shared_vpc_host_project.shared_vpc_host,
-    google_compute_shared_vpc_service_project.service_projects,
-    google_service_networking_connection.psa_connection
-  ]
-}
+# output "name" {
+#   description = "The name of the VPC being created."
+#   value       = local.network.name
+#   depends_on = [
+#     google_compute_network_peering.local,
+#     google_compute_network_peering.remote,
+#     google_compute_shared_vpc_host_project.shared_vpc_host,
+#     google_compute_shared_vpc_service_project.service_projects,
+#     google_service_networking_connection.psa_connection
+#   ]
+# }
 
 output "network" {
   description = "Network resource."
@@ -46,17 +46,17 @@ output "project_id" {
   ]
 }
 
-output "self_link" {
-  description = "The URI of the VPC being created."
-  value       = local.network.self_link
-  depends_on = [
-    google_compute_network_peering.local,
-    google_compute_network_peering.remote,
-    google_compute_shared_vpc_host_project.shared_vpc_host,
-    google_compute_shared_vpc_service_project.service_projects,
-    google_service_networking_connection.psa_connection
-  ]
-}
+# output "self_link" {
+#   description = "The URI of the VPC being created."
+#   value       = local.network.self_link
+#   depends_on = [
+#     google_compute_network_peering.local,
+#     google_compute_network_peering.remote,
+#     google_compute_shared_vpc_host_project.shared_vpc_host,
+#     google_compute_shared_vpc_service_project.service_projects,
+#     google_service_networking_connection.psa_connection
+#   ]
+# }
 
 output "subnet_ips" {
   description = "Map of subnet address ranges keyed by name."

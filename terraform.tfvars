@@ -87,7 +87,7 @@ apigee_envgroups = {
 */
 apigee_instances  = {
   #IP Ranges documented at https://spaces.gwl.ca/display/ECS/GCP+Projects+and+CIDR+Implementation
-  na-ne1-instance = {
+  prototype-na-ne1-instance = {
     region        = "northamerica-northeast1"
     ip_range      = "10.58.24.0/22"
     environments  = ["proto1", "proto2"]

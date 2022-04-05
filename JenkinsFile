@@ -76,7 +76,7 @@ node('ecs-tfenv') {
         stage('TF_PLAN') {
             ansiColor('xterm') {
                 //env.TF_LOG = 'INFO'
-                terraform state list
+                terraformState()
                 terraformPlan('$gcp_project_name', 'terraform.tfvars')
             }
         }

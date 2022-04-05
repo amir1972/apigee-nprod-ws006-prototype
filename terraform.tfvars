@@ -54,7 +54,7 @@ display_name = "apigee-nprod-ws006-prototype"
 organization_description = "Apigee Organization created by Terraform"
 
 # Apigee Environment Names.
-environments = ["proto1"] #, "proto2"
+environments = ["proto1", "proto2"]
 /*type = map(object({
     environments = list(string)
     hostnames    = list(string)
@@ -73,7 +73,7 @@ hostnames = ["prototype-api.canadalife.com","prototype-apix.canadalife.com"]
 */
 apigee_envgroups = {
   proto-env-grp = {
-    environments = ["proto1"] #, "proto2"
+    environments = ["proto1", "proto2"]
     hostnames    = ["prototype-api.canadalife.com","prototype-apix.canadalife.com"]
   }
 }
@@ -90,7 +90,7 @@ apigee_instances  = {
   prototype-na-ne1-instance = {
     region        = "northamerica-northeast1"
     ip_range      = "10.58.24.0/22"
-    environments  = ["proto1"] #, "proto2"
+    environments  = ["proto1", "proto2"]
   }
 }
 

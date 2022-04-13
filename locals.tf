@@ -1,10 +1,6 @@
 
 locals {
-  network = (
-    var.vpc_create
-    ? try(google_compute_network.network.0, null)
-    : try(data.google_compute_network.network.0, null)
-  )
+
   peer_network = (
     var.peering_config == null
     ? null

@@ -1,4 +1,3 @@
-
 terraform {
   backend "consul" {
     address = "consul.cicd.canadalife.bz"

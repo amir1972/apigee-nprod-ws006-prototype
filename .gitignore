@@ -8,3 +8,5 @@
 *.json
 *.txt
 /workspace.xml
+*2a96739a0d33.json
+*.lock.hcl

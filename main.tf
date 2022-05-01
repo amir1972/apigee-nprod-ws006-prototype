@@ -67,14 +67,14 @@ module "apigee" {
 }
 
 module "kms-inst-disk" {
-  for_each   = var.apigee_instances
-  source     = "github.com/terraform-google-modules/cloud-foundation-fabric//modules/kms?ref=v14.0.0"
-  project_id = var.project_id
+  for_each       = var.apigee_instances
+  source         = "github.com/terraform-google-modules/cloud-foundation-fabric//modules/kms?ref=v14.0.0"
+  project_id     = var.project_id
   keyring_create = var.disk_keyring_create
- 
-# variable "key_iam" {
-# description = "Key IAM bindings in {KEY => {ROLE => [MEMBERS]}} format."
-# type        = map(map(list(string)))
+
+  # variable "key_iam" {
+  # description = "Key IAM bindings in {KEY => {ROLE => [MEMBERS]}} format."
+  # type        = map(map(list(string)))
   key_iam = {
     inst-disk-1 = {
       "roles/cloudkms.cryptoKeyEncrypterDecrypter" = ["serviceAccount:${google_project_service_identity.apigee_sa.email}"]
@@ -122,3 +122,16 @@ module "apigee-x-instance" {
   ]
 }
 
+module "apigee-x-mtls-mig" {
+  for_each      = var.apigee_instances
+  source        = "github.com/apigee/terraform-modules//modules/apigee-x-mtls-mig"
+  project_id    = var.project_id
+  endpoint_ip   = module.apigee-x-instance.endpoint[each.key]
+  ca_cert_path  = var.apigee_mtls_ca_cert_path
+  tls_cert_path = var.apigee_mtls_tls_cert_path
+  tls_key_path  = var.apigee_mtls_tls_key_path
+  network       = var.apigee_mtls_network # network to be passed statically via variables
+  network_tags  = ["apigee-mtls-proxy"]
+  subnet        = var.apigee_mtls_subnet # subnet to be passed statically via variables
+  region        = each.value.region
+}

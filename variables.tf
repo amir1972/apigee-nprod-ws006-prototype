@@ -55,12 +55,12 @@ variable "ip_range_support" {
 #Required Variables 
 variable "terraform_service_account" {
   description = "CICD account will impersonation this account when applying Terraform changes"
-  type = string
+  type        = string
 }
 
 variable "cicd_cred_file" {
   description = "Credential file to use to enable impersonation from CICD"
-  type = string
+  type        = string
 }
 
 #variable "credentials_file" {
@@ -368,35 +368,35 @@ variable "iam_billing_roles" {
   description = "Billing account roles granted to the service account, by billing account id. Non-authoritative."
   type        = map(list(string))
   default     = {}
-//  nullable    = false
+  //  nullable    = false
 }
 
 variable "iam_folder_roles" {
   description = "Folder roles granted to the service account, by folder id. Non-authoritative."
   type        = map(list(string))
   default     = {}
-//  nullable    = false
+  //  nullable    = false
 }
 
 variable "iam_organization_roles" {
   description = "Organization roles granted to the service account, by organization id. Non-authoritative."
   type        = map(list(string))
   default     = {}
-//  nullable    = false
+  //  nullable    = false
 }
 
 variable "iam_project_roles" {
   description = "Project roles granted to the service account, by project id."
   type        = map(list(string))
   default     = {}
-//  nullable    = false
+  //  nullable    = false
 }
 
 variable "iam_storage_roles" {
   description = "Storage roles granted to the service account, by bucket name."
   type        = map(list(string))
   default     = {}
-//  nullable    = false
+  //  nullable    = false
 }
 
 variable "service_name" {
@@ -553,7 +553,7 @@ variable "logging_sinks" {
     ])
     error_message = "Type must be one of 'bigquery', 'logging', 'pubsub', 'storage'."
   }
-  default  = {}
+  default = {}
   //nullable = false
 }
 
@@ -581,7 +581,7 @@ variable "policy_list" {
     status              = bool
     values              = list(string)
   }))
-  default  = {}
+  default = {}
   //nullable = false
 }
 
@@ -602,4 +602,27 @@ variable "tags" {
     }))
   }))
   default = null
+}
+
+variable "apigee_mtls_network" {
+  type    = string
+  default = "default"
+}
+
+variable "apigee_mtls_subnet" {
+  type    = string
+  default = "default"
+}
+
+variable "apigee_mtls_ca_cert_path" {
+  type    = string
+  default = "./certs/client-ca.crt"
+}
+variable "apigee_mtls_tls_cert_path" {
+  type    = string
+  default = "./certs/server.crt"
+}
+variable "apigee_mtls_tls_key_path" {
+  type    = string
+  default = "./certs/server.key"
 }

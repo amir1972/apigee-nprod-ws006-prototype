@@ -1,14 +1,14 @@
 
 # Terraform Variables
 #The CICD id will impersonate this id when applying changes
-terraform_service_account  = "apigee-nprod-ws006-tf-prod@cantech-terraformers.iam.gserviceaccount.com"
-cicd_cred_file             = "apigee-nprod-ws006-prototype.json"
+terraform_service_account = "terraform@htayyar-prod.iam.gserviceaccount.com"
+cicd_cred_file            = "htayyar-prod-982155fd31cc.json"
 
 # Project Details
 
 # Project ID to host this Apigee organization (will also become the Apigee Org name).
 #type        = string
-project_id = "apigee-nprod-ws006-prototype"
+project_id = "htayyar-prod"
 
 # Location of Credentials File
 #type        = string // is a json file download and stored in teh same folder of Terrafomr script once you create the Service and then a Key
@@ -34,7 +34,7 @@ runtime_type = "CLOUD" //"HYBRID"
 # Organization id in organizations/nnnnnn format. -- If you don't have GCP Orgaization see the bottom of the Readme file for  the lines that need to be commented out.
 #type        = string
 # you can get the number in gcloud using: gcloud organizations list
-organization_id = "organizations/166307584217"   #Required
+organization_id = "organizations/166307584217" #Required
 
 
 # Apigee Org Details
@@ -62,7 +62,7 @@ environments = ["proto1", "proto2"]
 
 # Apigee hostnames.
 #type        = list(string)
-hostnames = ["prototype-api.canadalife.com","prototype-apix.canadalife.com"]
+hostnames = ["prototype-api.canadalife.com", "prototype-apix.canadalife.com"]
 
 # Apigee Environment Groups.
 /*type = map(object({
@@ -73,7 +73,7 @@ hostnames = ["prototype-api.canadalife.com","prototype-apix.canadalife.com"]
 apigee_envgroups = {
   proto-env-grp = {
     environments = ["proto1", "proto2"]
-    hostnames    = ["prototype-api.canadalife.com","prototype-apix.canadalife.com"]
+    hostnames    = ["prototype-api.canadalife.com", "prototype-apix.canadalife.com"]
   }
 }
 
@@ -84,17 +84,17 @@ apigee_envgroups = {
     environments   = list(string)
   }))
 */
-apigee_instances  = {
+apigee_instances = {
   #IP Ranges documented at https://spaces.gwl.ca/display/ECS/GCP+Projects+and+CIDR+Implementation
   prototype-na-ne1-instance = {
-    region        = "northamerica-northeast1"
-    ip_range      = "10.58.24.0/22"
-    environments  = ["proto1", "proto2"]
+    region       = "northamerica-northeast1"
+    ip_range     = "10.58.24.0/22"
+    environments = ["proto1", "proto2"]
   }
 }
 
 #Set to false to manage keys and IAM bindings in an existing keyring.
-db_keyring_create = false
+db_keyring_create   = false
 disk_keyring_create = true
 
 #Customer Managed Encryption Key (CMEK) self link (e.g. `projects/foo/locations/us/keyRings/bar/cryptoKeys/baz`) used for disk and volume encryption (required for PAID Apigee Orgs only).
@@ -103,7 +103,7 @@ disk_encryption_key = "diskkey-2022-04-05"
 
 #Google Kms Key Ring Name
 #type        = string
-kms_key_ring_name = "apigee-disk-keyring-03"  #Cannot be reused, must create new names
+kms_key_ring_name = "apigee-disk-keyring-03" #Cannot be reused, must create new names
 
 #Cloud KMS key self link (e.g. `projects/foo/locations/us/keyRings/bar/cryptoKeys/baz`) used for encrypting the data that is stored and replicated across runtime instances (immutable, used in Apigee X only).
 #type        = string
@@ -117,12 +117,12 @@ kms_key_db_ring_name = "apigee-db-keyring-01" #Cannot be reused, must create new
 #VPC Networks
 # Create VPC. When set to false, uses a data source to reference existing VPC.
 #type        = bool
-vpc_create = false   #Leave false all the time.
+vpc_create = false #Leave false all the time.
 
 #VPC network self link (requires service network peering enabled (Used in Apigee X only).
 # type        = string
 authorized_network_fqn = "projects/net-hub-infra/global/networks/pvt-cl-hub-prod-vpc-01"
-authorized_network = ""
+authorized_network     = ""
 
 #Customer-provided CIDR block of length 22 for the Apigee instance.
 #type        = string
@@ -467,3 +467,10 @@ tag_bindings = null
   }))
 */
 tags = null
+
+## Apigee mTLS related variables
+apigee_mtls_network= "default"
+apigee_mtls_subnet="default"
+apigee_mtls_ca_cert_path="./certs/client-ca.crt"
+apigee_mtls_tls_cert_path="./certs/server.crt"
+apigee_mtls_tls_key_path="./certs/server.key"

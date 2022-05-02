@@ -604,7 +604,7 @@ variable "tags" {
   default = null
 }
 
-################################
+######## Apigee mtls variables >>> ############
 variable "apigee_mtls_network" {
   type    = string
   default = "default"
@@ -627,4 +627,5 @@ variable "apigee_mtls_tls_key_path" {
   type    = string
   default = "./certs/server.key"
 }
-################################
+######## <<< Apigee mtls variables ############
+

@@ -1,14 +1,14 @@
 
 # Terraform Variables
 #The CICD id will impersonate this id when applying changes
-terraform_service_account = "terraform@htayyar-prod.iam.gserviceaccount.com"
-cicd_cred_file            = "htayyar-prod-982155fd31cc.json"
+terraform_service_account  = "apigee-nprod-ws006-tf-prod@cantech-terraformers.iam.gserviceaccount.com"
+cicd_cred_file             = "apigee-nprod-ws006-prototype.json"
 
 # Project Details
 
 # Project ID to host this Apigee organization (will also become the Apigee Org name).
 #type        = string
-project_id = "htayyar-prod"
+project_id = "apigee-nprod-ws006-prototype"
 
 # Location of Credentials File
 #type        = string // is a json file download and stored in teh same folder of Terrafomr script once you create the Service and then a Key
@@ -469,8 +469,8 @@ tag_bindings = null
 tags = null
 
 ## Apigee mTLS related variables
-apigee_mtls_network= "default"
-apigee_mtls_subnet="default"
-apigee_mtls_ca_cert_path="./certs/client-ca.crt"
-apigee_mtls_tls_cert_path="./certs/server.crt"
-apigee_mtls_tls_key_path="./certs/server.key"
+apigee_mtls_network       = "default"
+apigee_mtls_subnet        = "default"
+apigee_mtls_ca_cert_path  = "./certs/client-ca.crt"
+apigee_mtls_tls_cert_path = "./certs/server.crt"
+apigee_mtls_tls_key_path  = "./certs/server.key"
